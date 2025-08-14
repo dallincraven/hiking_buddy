@@ -19,6 +19,9 @@ REPORTS_DIR = BASE_DIR / "reports"
 for d in (UPLOAD_DIR, CHARTS_DIR, REPORTS_DIR):
     d.mkdir(parents=True, exist_ok=True)
     
+ALLOWED_GPX_EXTS = {".gpx"}
+ALLOWED_IMG_EXTS = {".jpg", ".jpeg", ".png", ".gif", ".webp", ".bmp"}
+    
 app = Flask(__name__)
 app.config["MAX_CONTENT_LENGTH"] = 50 * 1024 *1024 #50 MB max upload
 
