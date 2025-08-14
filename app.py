@@ -1,18 +1,23 @@
 import os
 import uuid
 import shutil
-from flask import Flask, render_template, request, url_for, redirect
+import tempfile
+from pathlib import Path
+from typing import List
+from flask import Flask, render_template, request, url_for, redirect, send_from_directory, abort
+from werkzeug.utils import secure_filename
+
 from utils.gpx_parser import parse_gpx_to_df
 from utils.chart_maker import make_elevation_chart, make_pace_chart
 from utils.pdf_generator import create_hike_pdf
 
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-UPLOAD_DIR = os.path.join(BASE_DIR, "uploads")
-CHARTS_DIR = os.path.join(BASE_DIR, "charts")
-REPORTS_DIR = os.path.join(BASE_DIR, "reports")
+BASE_DIR = Path(__file__).resolve().parent
+UPLOAD_DIR = BASE_DIR / "uploads"
+CHARTS_DIR = BASE_DIR / "charts"   # we’ll nest per-job inside here
+REPORTS_DIR = BASE_DIR / "reports"
 
 for d in (UPLOAD_DIR, CHARTS_DIR, REPORTS_DIR):
-    os.makedirs(d, exist_ok=True)
+    d.mkdir(parents=True, exist_ok=True)
     
 app = Flask(__name__)
 app.config["MAX_CONTENT_LENGTH"] = 50 * 1024 *1024 #50 MB max upload
