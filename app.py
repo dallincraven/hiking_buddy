@@ -123,3 +123,7 @@ def result():
 def download_report(filename):
     # sends from reports directory safely
     return send_from_directory(app.config["REPORTS_FOLDER"], filename, as_attachment=True)
+
+if __name__ == "__main__":
+    app.run(debug=True)
+    
