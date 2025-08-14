@@ -111,3 +111,15 @@ def upload():
         shutil.rmtree(charts_job_dir, ignore_errors=True)
         return "Error processing file", 500
     
+@app.route("/result")
+def result():
+    job_id = request.args.get("job_id")
+    pdf = request.args.get("pdf")
+    if not job_id or not pdf:
+        abort(400)
+    return render_template("result.html", job_id=job_id, pdf=pdf)
+
+@app.route("/reports/<path:filename>")
+def download_report(filename):
+    # sends from reports directory safely
+    return send_from_directory(app.config["REPORTS_FOLDER"], filename, as_attachment=True)
