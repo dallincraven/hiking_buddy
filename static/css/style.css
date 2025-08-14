@@ -1,0 +1,5 @@
+body{font-family: Arial, Helvetica, sans-serif; background:#f7f7f7; color:#222}
+.container{max-width:820px;margin:40px auto;padding:20px;background:#fff;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+input[type=file], input[type=text], textarea {width:100%; padding:8px; margin-top:6px;}
+button{background:#2e8b57;color:#fff;padding:10px 16px;border:none;border-radius:4px;cursor:pointer}
+button:hover{opacity:0.95}
