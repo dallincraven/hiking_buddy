@@ -123,8 +123,8 @@ def result():
 
 @app.route("/reports/<path:filename>")
 def download_report(filename):
-    # sends from reports directory safely
-    return send_from_directory(app.config["REPORTS_FOLDER"], filename, as_attachment=True)
+    # sends PDF for in-browser viewing
+    return send_from_directory(app.config["REPORTS_FOLDER"], filename, mimetype="application/pdf", as_attachment=False)
 
 if __name__ == "__main__":
     app.run(debug=True)
