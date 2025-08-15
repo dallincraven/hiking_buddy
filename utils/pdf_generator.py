@@ -20,7 +20,7 @@ def create_hike_pdf(output_path, df, chart_paths, photo_paths, stats):
     if stats.get("notes"):
         story.append(Paragraph("Notes:", styles["Heading2"]))
         story.append(Paragraph(stats["notes"], styles["BodyText"]))
-    story.append(PageBreak())
+    
     # Key stats
     story.append(Paragraph("Hike Summary", styles["Heading1"]))
     total_km = df['cum_km'].max() if 'cum_km' in df else 0
@@ -39,6 +39,7 @@ def create_hike_pdf(output_path, df, chart_paths, photo_paths, stats):
     ]))
     story.append(t)
     story.append(Spacer(1, 12))
+    story.append(PageBreak())
     # Charts
     story.append(Paragraph("Charts", styles["Heading1"]))
     for cp in chart_paths:
@@ -55,7 +56,7 @@ def create_hike_pdf(output_path, df, chart_paths, photo_paths, stats):
                 im = PILImage.open(p)
                 w, h = im.size
                 ratio = w / float(h)
-                desired_w = 6.5*inch
+                desired_w = 4.5*inch
                 desired_h = desired_w / ratio
                 story.append(Image(p, width=desired_w, height=desired_h))
                 story.append(Spacer(1, 12))
