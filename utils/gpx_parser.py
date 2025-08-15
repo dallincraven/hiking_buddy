@@ -43,7 +43,8 @@ def parse_gpx_to_df(gpx_path):
                     "lat": lat,
                     "lon": lon,
                     "elevation": ele,
-                    "delta_secs":dist,
+                    "delta_secs":dt,
+                    "delta_m": dist,
                     "cum_dist_m": total_dist
                 })
                 prev_point = point
