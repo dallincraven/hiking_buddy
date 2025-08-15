@@ -1,7 +1,8 @@
 import os
 import uuid
 import matplotlib.pyplot as plt
-import seaborn as sns 
+import seaborn as sns
+import pandas as pd
 from pathlib import Path
 sns.set(style='whitegrid', rc={"figure.figsize":(9,4)})
 
@@ -28,9 +29,10 @@ def make_pace_chart(df, charts_dir, job_id):
         return None
     plt.figure()
     if 'speed_kmh' in df:
-        y=df['speed_kmh'].rolling(window=5, min_periods=1).mean()
+        df['speed_kmh'] = pd.to_numeric(df['speed_kmh'], errors='coerce')
+        y = df['speed_kmh'].rolling(window=5, min_periods=1).mean()
     else:
-        y=df['pace_m_per_s'].rolling(window=5, min_periods=1).mean()
+        y = df['pace_m_per_s'].rolling(window=5, min_periods=1).mean()
     
     plt.plot(df['cum_km'], y, linewidth=1.2)
     plt.xlabel("Distance (km)")
