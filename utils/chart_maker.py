@@ -6,7 +6,7 @@ from pathlib import Path
 sns.set(style='whitegrid', rc={"figure.figsize":(9,4)})
 
 def make_elevation_chart(df, charts_dir, job_id):
-    charts_dir = Path(charts_dir)  # Add this line
+    charts_dir = Path(charts_dir) 
     path = charts_dir / f"elev_{job_id}.png"
     if 'cum_km' not in df.columns or 'elevation' not in df.columns:
         return None
@@ -22,6 +22,7 @@ def make_elevation_chart(df, charts_dir, job_id):
     return path
 
 def make_pace_chart(df, charts_dir, job_id):
+    charts_dir = Path(charts_dir)
     path = charts_dir / f"pace_{job_id}.png"
     if 'cum_km' not in df.columns or 'speed_kmh' not in df.columns:
         return None
