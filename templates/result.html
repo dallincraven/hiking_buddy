@@ -7,8 +7,8 @@
     </head>
     <body>
         <div class="container">
-            <h1>Your report is ready</h1>
-            <p><a href="{{ pdf_url }}"></a></p>
+            <h2>Your report is ready!</h2>
+            <iframe src="{{ url_for('download_report', filename=pdf) }}" width="100%" height="600px"></iframe>
         </div>
     </body>
 </html>
