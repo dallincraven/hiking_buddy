@@ -1,7 +1,8 @@
 import os
 import uuid
 import matplotlib.pyplot as plt
-import seaborn as from django.conf import settings
+import seaborn as sns 
+from django.conf import settings
 
 sns.set(style='whitegrid', rc={"figure.figsize":(9,4)})
 
