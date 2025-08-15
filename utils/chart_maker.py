@@ -2,8 +2,7 @@ import os
 import uuid
 import matplotlib.pyplot as plt
 import seaborn as sns 
-from django.conf import settings
-
+from pathlib import Path
 sns.set(style='whitegrid', rc={"figure.figsize":(9,4)})
 
 def make_elevation_chart(df, charts_dir, job_id):

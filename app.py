@@ -15,6 +15,8 @@ BASE_DIR = Path(__file__).resolve().parent
 UPLOAD_DIR = BASE_DIR / "uploads"
 CHARTS_DIR = BASE_DIR / "charts"   # we’ll nest per-job inside here
 REPORTS_DIR = BASE_DIR / "reports"
+app = Flask(__name__)
+app.config["MAX_CONTENT_LENGTH"] = 50 * 1024 *1024 #50 MB max upload
 
 for d in (UPLOAD_DIR, CHARTS_DIR, REPORTS_DIR):
     d.mkdir(parents=True, exist_ok=True)
