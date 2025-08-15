@@ -29,9 +29,6 @@ ALLOWED_IMG_EXTS = {".jpg", ".jpeg", ".png", ".gif", ".webp", ".bmp"}
 def allowed_ext(filename: str, allowed: set) -> bool:
     return Path(filename).suffix.lower() in allowed
     
-app = Flask(__name__)
-app.config["MAX_CONTENT_LENGTH"] = 50 * 1024 *1024 #50 MB max upload
-
 @app.route("/")
 def index():
     return render_template("index.html")
