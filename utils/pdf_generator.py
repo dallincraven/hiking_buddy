@@ -46,9 +46,10 @@ def create_hike_pdf(output_path, df, chart_paths, photo_paths, stats):
         if cp:
             story.append(Image(cp, width=6.5*inch, height=3*inch))
             story.append(Spacer(1, 12))
-    story.append(PageBreak())
+    
     # Photos
     if photo_paths:
+        story.append(PageBreak())
         story.append(Paragraph("Photos", styles["Heading1"]))
         for p in photo_paths:
             try:
